@@ -1,0 +1,24 @@
+{
+    "name": "phoneburner/psr7-wrapper",
+    "description": "Set of traits that make wrapping PSR-7 objects easier.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Lytle",
+            "email": "tim@phoneburner.com"
+        }
+    ],
+    "require": {
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhoneBurner\\Http\\Message\\": "src/",
+            "PhoneBurnerTest\\Http\\Message\\": "test/"
+        }
+    }
+}
