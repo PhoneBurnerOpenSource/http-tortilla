@@ -1,8 +1,9 @@
 {
-    "name": "phoneburner/psr7-wrapper",
+    "name": "phoneburner/burrito",
     "description": "Set of traits that make wrapping PSR-7 objects easier.",
     "type": "library",
     "license": "MIT",
+    "keywords": ["psr", "psr-7", "http", "http-message", "request", "response"],
     "authors": [
         {
             "name": "Tim Lytle",
