@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
 use PhoneBurnerTest\Http\Message\DataProvider\MessageDataProvider;

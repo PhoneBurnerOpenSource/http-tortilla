@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message;
 
 use PHPUnit\Framework\TestCase;
@@ -20,7 +21,7 @@ trait CommonWrapperTests
      * @test
      * @dataProvider provideAllMethods
      */
-    public function proxied_methods_require_message($method, $args): void
+    public function proxiedMethodsRequireMessage($method, $args): void
     {
         $fixture_class = self::FIXTURE_CLASS;
         $sut = new $fixture_class();
@@ -32,7 +33,7 @@ trait CommonWrapperTests
      * @test
      * @dataProvider provideGetterMethods
      */
-    public function getter_methods_are_proxied(string $method, array $args, $return, array $expected = null): void
+    public function getterMethodsAreProxied(string $method, array $args, $return, array $expected = null): void
     {
         // allow expected args to differ from the args we pass the wrapper
         // but if they're not defined, they are the same as what is passed to
@@ -51,7 +52,7 @@ trait CommonWrapperTests
      * @test
      * @dataProvider provideWithMethods
      */
-    public function with_methods_are_proxied(string $method, array $args, array $expected = null): void
+    public function withMethodsAreProxied(string $method, array $args, array $expected = null): void
     {
         // allow expected args to differ from the args we pass the wrapper
         // but if they're not defined, they are the same as what is passed to
@@ -71,7 +72,7 @@ trait CommonWrapperTests
      * @test
      * @dataProvider provideWithMethods
      */
-    public function with_methods_use_factory_when_provided($method, $args,array $expected = null): void
+    public function withMethodsUseFactoryWhenProvided($method, $args, array $expected = null): void
     {
         // allow expected args to differ from the args we pass the wrapper
         // but if they're not defined, they are the same as what is passed to

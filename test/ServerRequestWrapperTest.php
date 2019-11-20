@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message;
 
 use PhoneBurnerTest\Http\Message\DataProvider\ServerRequestDataProvider;
@@ -11,6 +12,6 @@ class ServerRequestWrapperTest extends TestCase
     use ServerRequestDataProvider;
     use CommonWrapperTests;
 
-    private CONST WRAPPED_CLASS = ServerRequestInterface::class;
-    private CONST FIXTURE_CLASS = ServerRequestWrapperFixture::class;
+    private const WRAPPED_CLASS = ServerRequestInterface::class;
+    private const FIXTURE_CLASS = ServerRequestWrapperFixture::class;
 }

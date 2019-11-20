@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
 use Psr\Http\Message\StreamInterface;
@@ -23,11 +24,11 @@ trait MessageDataProvider
 
         $header = [
             'line one',
-            'line two'
+            'line two',
         ];
 
         $headers = [
-            'test' => $header
+            'test' => $header,
         ];
 
         yield "getHeaders()" => ['getHeaders', [], $headers];

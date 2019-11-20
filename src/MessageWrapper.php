@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurner\Http\Message;
 
 use Psr\Http\Message\MessageInterface;

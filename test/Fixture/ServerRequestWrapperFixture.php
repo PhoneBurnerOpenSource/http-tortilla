@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message\Fixture;
 
 use PhoneBurner\Http\Message\ServerRequestWrapper;

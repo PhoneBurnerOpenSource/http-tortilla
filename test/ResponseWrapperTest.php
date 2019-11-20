@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message;
 
 use PhoneBurnerTest\Http\Message\DataProvider\ResponseDataProvider;
@@ -11,6 +12,6 @@ class ResponseWrapperTest extends TestCase
     use ResponseDataProvider;
     use CommonWrapperTests;
 
-    private CONST WRAPPED_CLASS = ResponseInterface::class;
-    private CONST FIXTURE_CLASS = ResponseWrapperFixture::class;
+    private const WRAPPED_CLASS = ResponseInterface::class;
+    private const FIXTURE_CLASS = ResponseWrapperFixture::class;
 }

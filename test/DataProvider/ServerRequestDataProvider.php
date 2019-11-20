@@ -1,4 +1,5 @@
 <?php
+
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
 use PhoneBurnerTest\Http\Message\DataProvider\RequestDataProvider;
@@ -19,7 +20,7 @@ trait ServerRequestDataProvider
 
         $params = [
             'key' => 'value',
-            'another_key' => 'another_value'
+            'another_key' => 'another_value',
         ];
 
         yield "getServerParams()" => ['getServerParams', [], $params];
@@ -66,7 +67,7 @@ trait ServerRequestDataProvider
 
         $params = [
             'key' => 'value',
-            'another_key' => 'another_value'
+            'another_key' => 'another_value',
         ];
 
         yield "withCookieParams(\$params)" => ['withCookieParams', [$params]];
