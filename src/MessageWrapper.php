@@ -8,20 +8,20 @@ use Psr\Http\Message\StreamInterface;
 trait MessageWrapper
 {
     private $message;
-    private $message_factory;
+    private $messageFactory;
 
     protected function setFactory(callable $factory)
     {
-        $this->message_factory = $factory;
+        $this->messageFactory = $factory;
     }
 
     private function viaFactory(MessageInterface $message)
     {
-        if (!$this->message_factory) {
+        if (!$this->messageFactory) {
             return $message;
         }
 
-        return call_user_func($this->message_factory, $message);
+        return call_user_func($this->messageFactory, $message);
     }
 
     protected function setMessage(MessageInterface $message)

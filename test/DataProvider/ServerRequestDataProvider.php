@@ -80,7 +80,6 @@ trait ServerRequestDataProvider
 
         yield "withUploadedFiles(\$params)" => ['withUploadedFiles', [$files]];
 
-
         yield "withParsedBody(null)" => ['withParsedBody', [null]];
         yield "withParsedBody(\$params)" => ['withParsedBody', [$params]];
         yield "withParsedBody((object) \$params)" => ['withParsedBody', [(object) $params]];
