@@ -74,17 +74,17 @@ trait ServerRequestWrapper
         return $this->getMessage()->getAttributes();
     }
 
-    public function getAttribute($name, $default = null)
+    public function getAttribute(string $name, $default = null)
     {
         return $this->getMessage()->getAttribute($name, $default);
     }
 
-    public function withAttribute($name, $value)
+    public function withAttribute(string $name, $value)
     {
         return $this->viaFactory($this->getMessage()->withAttribute($name, $value));
     }
 
-    public function withoutAttribute($name)
+    public function withoutAttribute(string $name)
     {
         return $this->viaFactory($this->getMessage()->withoutAttribute($name));
     }

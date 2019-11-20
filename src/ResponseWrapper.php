@@ -29,7 +29,7 @@ trait ResponseWrapper
         return $this->getMessage()->getStatusCode();
     }
 
-    public function withStatus($code, $reasonPhrase = '')
+    public function withStatus(int $code, string $reasonPhrase = '')
     {
         return $this->viaFactory($this->getMessage()->withStatus($code, $reasonPhrase));
     }

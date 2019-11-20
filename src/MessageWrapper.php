@@ -43,7 +43,7 @@ trait MessageWrapper
         return $this->getMessage()->getProtocolVersion();
     }
 
-    public function withProtocolVersion($version): MessageInterface
+    public function withProtocolVersion(string $version): MessageInterface
     {
         return $this->viaFactory($this->getMessage()->withProtocolVersion($version));
     }
@@ -53,32 +53,32 @@ trait MessageWrapper
         return $this->getMessage()->getHeaders();
     }
 
-    public function hasHeader($name): bool
+    public function hasHeader(string $name): bool
     {
         return $this->getMessage()->hasHeader($name);
     }
 
-    public function getHeader($name): array
+    public function getHeader(string $name): array
     {
         return $this->getMessage()->getHeader($name);
     }
 
-    public function getHeaderLine($name): string
+    public function getHeaderLine(string $name): string
     {
         return $this->getMessage()->getHeaderLine($name);
     }
 
-    public function withHeader($name, $value): MessageInterface
+    public function withHeader(string $name, $value): MessageInterface
     {
         return $this->viaFactory($this->getMessage()->withHeader($name, $value));
     }
 
-    public function withAddedHeader($name, $value): MessageInterface
+    public function withAddedHeader(string $name, $value): MessageInterface
     {
         return $this->viaFactory($this->getMessage()->withAddedHeader($name, $value));
     }
 
-    public function withoutHeader($name): MessageInterface
+    public function withoutHeader(string $name): MessageInterface
     {
         return $this->viaFactory($this->getMessage()->withoutHeader($name));
     }
