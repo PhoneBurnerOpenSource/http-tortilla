@@ -6,6 +6,12 @@ decoration) of various PSR-7 classes. Wrapping the classes allows easy
 addition of convenience methods while maintaining compatibility with
 code that relies on the underlying PSR interfaces.
 
+PHP 7.1
+-------
+As the traits provide the interface methods, they also _enhance_ the
+method signatures with type hints and return values. Because of that
+PHP 7.1 or higher is required.
+
 Usage
 -----
 To add behaviour to a PSR7 object that implements `MessageInterface` or
