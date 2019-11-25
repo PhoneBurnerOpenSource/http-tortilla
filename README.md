@@ -1,5 +1,5 @@
-Burrito - HTTP Message (PSR-7) Wrapper
-======================================
+HTTP Tortilla - HTTP Message (PSR-7) Wrapper
+============================================
 
 This library provides a simple set of traits to allow wrapping (or 
 decoration) of various PSR-7 classes. Wrapping the classes allows easy
