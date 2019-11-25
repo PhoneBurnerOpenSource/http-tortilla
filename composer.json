@@ -1,5 +1,5 @@
 {
-    "name": "phoneburner/burrito",
+    "name": "phoneburner/http-tortilla",
     "description": "Set of traits that make wrapping PSR-7 objects easier.",
     "type": "library",
     "license": "MIT",
