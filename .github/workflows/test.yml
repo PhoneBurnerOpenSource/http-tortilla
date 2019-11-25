@@ -29,7 +29,6 @@ jobs:
       uses: shivammathur/setup-php@master
       with:
         php-version: ${{ matrix.php-versions }}
-        extension-csv: mbstring, bcmath, curl, intl
         coverage: xdebug
 
     - name: Validate composer.json and composer.lock
@@ -39,7 +38,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: PHPCS
-      run: php vendor/bin/phpcs
+      run: php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
       
     - name: PHPUnit
       run: vendor/bin/phpunit --coverage-text
