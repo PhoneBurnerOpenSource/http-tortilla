@@ -3,12 +3,12 @@
 namespace PhoneBurnerTest\Http\Message;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\MessageInterface;
+use Prophecy\Prophecy\ObjectProphecy;
 
 trait CommonWrapperTests
 {
     /**
-     * @var \Prophecy\Prophecy\ObjectProphecy|MessageInterface
+     * @var ObjectProphecy
      */
     private $mocked_wrapped;
 
@@ -21,7 +21,7 @@ trait CommonWrapperTests
      * @test
      * @dataProvider provideAllMethods
      */
-    public function proxiedMethodsRequireMessage($method, $args): void
+    public function proxiedMethodsRequireWrappedClass($method, $args): void
     {
         $fixture_class = self::FIXTURE_CLASS;
         $sut = new $fixture_class();
