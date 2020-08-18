@@ -22,7 +22,11 @@
     },
     "autoload": {
         "psr-4": {
-            "PhoneBurner\\Http\\Message\\": "src/",
+            "PhoneBurner\\Http\\Message\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "PhoneBurnerTest\\Http\\Message\\": "test/"
         }
     }
