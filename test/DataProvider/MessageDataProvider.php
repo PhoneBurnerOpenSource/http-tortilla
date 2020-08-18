@@ -8,13 +8,8 @@ trait MessageDataProvider
 {
     public function provideAllMethods(): \Generator
     {
-        foreach ($this->provideWithMethods() as $label => $data) {
-            yield $label => $data;
-        }
-
-        foreach ($this->provideGetterMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideWithMethods();
+        yield from $this->provideGetterMethods();
     }
 
     public function provideGetterMethods(): \Generator
