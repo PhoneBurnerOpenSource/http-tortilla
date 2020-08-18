@@ -5,7 +5,7 @@ namespace PhoneBurnerTest\Http\Message\Fixture;
 use PhoneBurner\Http\Message\RequestWrapper;
 use Psr\Http\Message\RequestInterface;
 
-class RequestWrapperFixture
+class RequestWrapperFixture implements RequestInterface
 {
     use RequestWrapper;
 
