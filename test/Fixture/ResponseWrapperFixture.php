@@ -5,7 +5,7 @@ namespace PhoneBurnerTest\Http\Message\Fixture;
 use PhoneBurner\Http\Message\ResponseWrapper;
 use Psr\Http\Message\ResponseInterface;
 
-class ResponseWrapperFixture
+class ResponseWrapperFixture implements ResponseInterface
 {
     use ResponseWrapper;
 

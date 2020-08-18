@@ -40,7 +40,7 @@ trait RequestWrapper
         return $this->getMessage()->getMethod();
     }
 
-    public function withMethod(string $method): RequestInterface
+    public function withMethod($method): RequestInterface
     {
         return $this->viaFactory($this->getMessage()->withMethod($method));
     }
@@ -50,7 +50,7 @@ trait RequestWrapper
         return $this->getMessage()->getUri();
     }
 
-    public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface
+    public function withUri(UriInterface $uri, $preserveHost = false): RequestInterface
     {
         return $this->viaFactory($this->getMessage()->withUri($uri, $preserveHost));
     }
