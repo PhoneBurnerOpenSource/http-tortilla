@@ -28,7 +28,7 @@ trait UploadWrapper
         return $this->getUploadedFile()->getStream();
     }
 
-    public function moveTo(string $targetPath): void
+    public function moveTo($targetPath): void
     {
         $this->getUploadedFile()->moveTo($targetPath);
     }

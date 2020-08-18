@@ -5,7 +5,7 @@ namespace PhoneBurnerTest\Http\Message\Fixture;
 use PhoneBurner\Http\Message\UploadWrapper;
 use Psr\Http\Message\UploadedFileInterface;
 
-class UploadedFileFixture
+class UploadedFileFixture implements UploadedFileInterface
 {
     use UploadWrapper;
 
