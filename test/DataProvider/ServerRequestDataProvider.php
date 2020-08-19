@@ -14,9 +14,7 @@ trait ServerRequestDataProvider
 
     public function provideGetterMethods(): \Generator
     {
-        foreach ($this->provideRequestGetterMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideRequestGetterMethods();
 
         $params = [
             'key' => 'value',
@@ -61,9 +59,7 @@ trait ServerRequestDataProvider
 
     public function provideWithMethods(): \Generator
     {
-        foreach ($this->provideRequestWithMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideRequestWithMethods();
 
         $params = [
             'key' => 'value',

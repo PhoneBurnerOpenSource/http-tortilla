@@ -14,9 +14,7 @@ trait RequestDataProvider
 
     public function provideGetterMethods(): \Generator
     {
-        foreach ($this->provideMessageGetterMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideMessageGetterMethods();
 
         yield "getRequestTarget()" => ['getRequestTarget', [], '*'];
 
@@ -32,9 +30,7 @@ trait RequestDataProvider
 
     public function provideWithMethods(): \Generator
     {
-        foreach ($this->provideMessageWithMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideMessageWithMethods();
 
         yield "withRequestTarget(*)" => ['withRequestTarget', ['*']];
 
