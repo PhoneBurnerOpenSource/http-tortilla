@@ -14,9 +14,7 @@ trait ResponseDataProvider
 
     public function provideGetterMethods(): \Generator
     {
-        foreach ($this->provideMessageGetterMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideMessageGetterMethods();
 
         yield "getStatusCode()" => ['getStatusCode', [], 200];
         yield "getReasonPhrase() => ''" => ['getReasonPhrase', [], ''];
@@ -25,9 +23,7 @@ trait ResponseDataProvider
 
     public function provideWithMethods(): \Generator
     {
-        foreach ($this->provideMessageWithMethods() as $label => $data) {
-            yield $label => $data;
-        }
+        yield from $this->provideMessageWithMethods();
 
         yield "withStatus(200)" => ['withStatus', [200], [200, '']];
         yield "withStatus(200, '')" => ['withStatus', [200, '']];

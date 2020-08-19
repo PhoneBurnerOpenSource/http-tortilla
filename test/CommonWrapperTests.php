@@ -7,6 +7,10 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 trait CommonWrapperTests
 {
+    abstract public function provideAllMethods(): \Generator;
+    abstract public function provideGetterMethods(): \Generator;
+    abstract public function provideWithMethods(): \Generator;
+
     /**
      * @var ObjectProphecy
      */
