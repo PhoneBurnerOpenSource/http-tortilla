@@ -2,12 +2,12 @@
 
 namespace PhoneBurnerTest\Http\Message\Fixture;
 
-use PhoneBurner\Http\Message\UploadWrapper;
+use PhoneBurner\Http\Message\UploadedFileWrapper;
 use Psr\Http\Message\UploadedFileInterface;
 
-class UploadedFileFixture implements UploadedFileInterface
+class UploadedFileWrapperFixture implements UploadedFileInterface
 {
-    use UploadWrapper;
+    use UploadedFileWrapper;
 
     public function __construct(UploadedFileInterface $file = null)
     {

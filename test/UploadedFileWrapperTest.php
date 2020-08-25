@@ -2,14 +2,14 @@
 
 namespace PhoneBurnerTest\Http\Message;
 
-use PhoneBurnerTest\Http\Message\Fixture\UploadedFileFixture;
+use PhoneBurnerTest\Http\Message\Fixture\UploadedFileWrapperFixture;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-class UploadWrapperTest extends WrapperTestCase
+class UploadedFileWrapperTest extends WrapperTestCase
 {
     protected const WRAPPED_CLASS = UploadedFileInterface::class;
-    protected const FIXTURE_CLASS = UploadedFileFixture::class;
+    protected const FIXTURE_CLASS = UploadedFileWrapperFixture::class;
 
     /**
      * @test
