@@ -3,16 +3,13 @@
 namespace PhoneBurnerTest\Http\Message;
 
 use PhoneBurnerTest\Http\Message\Fixture\UploadedFileFixture;
-use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-class UploadWrapperTest extends TestCase
+class UploadWrapperTest extends WrapperTestCase
 {
-    use CommonWrapperTests;
-
-    private const WRAPPED_CLASS = UploadedFileInterface::class;
-    private const FIXTURE_CLASS = UploadedFileFixture::class;
+    protected const WRAPPED_CLASS = UploadedFileInterface::class;
+    protected const FIXTURE_CLASS = UploadedFileFixture::class;
 
     /**
      * @test
@@ -69,7 +66,7 @@ class UploadWrapperTest extends TestCase
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): ?\Generator
+    public function provideGetterMethods(): \Generator
     {
         $stream = $this->prophesize(StreamInterface::class);
         yield "getStream()" => ['getStream', [], $stream->reveal()];
@@ -86,8 +83,8 @@ class UploadWrapperTest extends TestCase
         yield "getClientMediaType() => null" => ['getClientMediaType', [], null];
     }
 
-    public function provideWithMethods(): array
+    public function provideWithMethods(): \Generator
     {
-        return [];
+        yield from [];
     }
 }

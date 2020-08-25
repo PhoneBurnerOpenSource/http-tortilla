@@ -5,7 +5,7 @@ namespace PhoneBurnerTest\Http\Message;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 
-trait CommonWrapperTests
+abstract class WrapperTestCase extends TestCase
 {
     abstract public function provideAllMethods(): \Generator;
     abstract public function provideGetterMethods(): \Generator;
@@ -14,11 +14,11 @@ trait CommonWrapperTests
     /**
      * @var ObjectProphecy
      */
-    private $mocked_wrapped;
+    protected $mocked_wrapped;
 
     public function setUp(): void
     {
-        $this->mocked_wrapped = $this->prophesize(self::WRAPPED_CLASS);
+        $this->mocked_wrapped = $this->prophesize(static::WRAPPED_CLASS);
     }
 
     /**
@@ -27,7 +27,7 @@ trait CommonWrapperTests
      */
     public function proxiedMethodsRequireWrappedClass($method, $args): void
     {
-        $fixture_class = self::FIXTURE_CLASS;
+        $fixture_class = static::FIXTURE_CLASS;
         $sut = new $fixture_class();
         $this->expectException(\UnexpectedValueException::class);
         $sut->$method(...$args);
@@ -46,7 +46,7 @@ trait CommonWrapperTests
             $expected = $args;
         }
 
-        $fixture_class = self::FIXTURE_CLASS;
+        $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->$method(...$expected)->willReturn($return);
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
         $this->assertSame($return, $sut->$method(...$args));
@@ -65,8 +65,8 @@ trait CommonWrapperTests
             $expected = $args;
         }
 
-        $fixture_class = self::FIXTURE_CLASS;
-        $return = $this->prophesize(self::WRAPPED_CLASS)->reveal();
+        $fixture_class = static::FIXTURE_CLASS;
+        $return = $this->prophesize(static::WRAPPED_CLASS)->reveal();
         $this->mocked_wrapped->$method(...$expected)->willReturn($return)->shouldBeCalled();
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
         $this->assertSame($return, $sut->$method(...$args));
@@ -85,10 +85,10 @@ trait CommonWrapperTests
             $expected = $args;
         }
 
-        $fixture_class = self::FIXTURE_CLASS;
+        $fixture_class = static::FIXTURE_CLASS;
 
-        $return = $this->prophesize(self::WRAPPED_CLASS)->reveal();
-        $wrapped = $this->prophesize(self::WRAPPED_CLASS)->reveal();
+        $return = $this->prophesize(static::WRAPPED_CLASS)->reveal();
+        $wrapped = $this->prophesize(static::WRAPPED_CLASS)->reveal();
 
         $this->mocked_wrapped->$method(...$expected)->willReturn($return)->shouldBeCalled();
 
