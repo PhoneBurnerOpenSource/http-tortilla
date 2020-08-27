@@ -88,7 +88,7 @@ abstract class WrapperTestCase extends TestCase
         $fixture_class = static::FIXTURE_CLASS;
 
         $return = $this->prophesize(static::WRAPPED_CLASS)->reveal();
-        $wrapped = $this->prophesize(static::WRAPPED_CLASS)->reveal();
+        $wrapped = $this->prophesize(static::FIXTURE_CLASS)->reveal();
 
         $this->mocked_wrapped->$method(...$expected)->willReturn($return)->shouldBeCalled();
 
