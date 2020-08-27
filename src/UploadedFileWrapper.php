@@ -7,49 +7,49 @@ use Psr\Http\Message\UploadedFileInterface;
 
 trait UploadedFileWrapper
 {
-    private $file;
+    private $wrapped;
 
-    private function setUploadedFile(UploadedFileInterface $file)
+    private function setWrapped(UploadedFileInterface $file)
     {
-        $this->file = $file;
+        $this->wrapped = $file;
     }
 
-    private function getUploadedFile(): UploadedFileInterface
+    private function getWrapped(): UploadedFileInterface
     {
-        if (!($this->file instanceof UploadedFileInterface)) {
+        if (!($this->wrapped instanceof UploadedFileInterface)) {
             throw new \UnexpectedValueException('must `setUploadedFile` before using it');
         }
 
-        return $this->file;
+        return $this->wrapped;
     }
 
     public function getStream(): StreamInterface
     {
-        return $this->getUploadedFile()->getStream();
+        return $this->getWrapped()->getStream();
     }
 
     public function moveTo($targetPath): void
     {
-        $this->getUploadedFile()->moveTo($targetPath);
+        $this->getWrapped()->moveTo($targetPath);
     }
 
     public function getSize(): ?int
     {
-        return $this->getUploadedFile()->getSize();
+        return $this->getWrapped()->getSize();
     }
 
     public function getError(): int
     {
-        return $this->getUploadedFile()->getError();
+        return $this->getWrapped()->getError();
     }
 
     public function getClientFilename(): ?string
     {
-        return $this->getUploadedFile()->getClientFilename();
+        return $this->getWrapped()->getClientFilename();
     }
 
     public function getClientMediaType(): ?string
     {
-        return $this->getUploadedFile()->getClientMediaType();
+        return $this->getWrapped()->getClientMediaType();
     }
 }

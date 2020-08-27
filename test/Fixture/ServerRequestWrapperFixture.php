@@ -12,7 +12,7 @@ class ServerRequestWrapperFixture implements ServerRequestInterface
     public function __construct(ServerRequestInterface $request = null, callable $factory = null)
     {
         if (null !== $request) {
-            $this->setMessage($request);
+            $this->setWrapped($request);
         }
 
         if (null !== $factory) {

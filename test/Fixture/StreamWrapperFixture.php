@@ -12,7 +12,7 @@ class StreamWrapperFixture implements StreamInterface
     public function __construct(StreamInterface $stream = null)
     {
         if (null !== $stream) {
-            $this->setStream($stream);
+            $this->setWrapped($stream);
         }
     }
 }

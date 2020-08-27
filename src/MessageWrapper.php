@@ -7,89 +7,89 @@ use Psr\Http\Message\StreamInterface;
 
 trait MessageWrapper
 {
-    private $message;
-    private $messageFactory;
+    private $wrapped;
+    private $factory;
 
     protected function setFactory(callable $factory)
     {
-        $this->messageFactory = $factory;
+        $this->factory = $factory;
     }
 
     private function viaFactory(MessageInterface $message)
     {
-        if (!$this->messageFactory) {
+        if (!$this->factory) {
             return $message;
         }
 
-        return call_user_func($this->messageFactory, $message);
+        return call_user_func($this->factory, $message);
     }
 
-    protected function setMessage(MessageInterface $message)
+    protected function setWrapped(MessageInterface $message)
     {
-        $this->message = $message;
+        $this->wrapped = $message;
     }
 
-    private function getMessage(): MessageInterface
+    private function getWrapped(): MessageInterface
     {
-        if (!($this->message instanceof MessageInterface)) {
+        if (!($this->wrapped instanceof MessageInterface)) {
             throw new \UnexpectedValueException('must `setMessage` before using it');
         }
 
-        return $this->message;
+        return $this->wrapped;
     }
 
     public function getProtocolVersion(): string
     {
-        return $this->getMessage()->getProtocolVersion();
+        return $this->getWrapped()->getProtocolVersion();
     }
 
     public function withProtocolVersion($version): MessageInterface
     {
-        return $this->viaFactory($this->getMessage()->withProtocolVersion($version));
+        return $this->viaFactory($this->getWrapped()->withProtocolVersion($version));
     }
 
     public function getHeaders(): array
     {
-        return $this->getMessage()->getHeaders();
+        return $this->getWrapped()->getHeaders();
     }
 
     public function hasHeader($name): bool
     {
-        return $this->getMessage()->hasHeader($name);
+        return $this->getWrapped()->hasHeader($name);
     }
 
     public function getHeader($name): array
     {
-        return $this->getMessage()->getHeader($name);
+        return $this->getWrapped()->getHeader($name);
     }
 
     public function getHeaderLine($name): string
     {
-        return $this->getMessage()->getHeaderLine($name);
+        return $this->getWrapped()->getHeaderLine($name);
     }
 
     public function withHeader($name, $value): MessageInterface
     {
-        return $this->viaFactory($this->getMessage()->withHeader($name, $value));
+        return $this->viaFactory($this->getWrapped()->withHeader($name, $value));
     }
 
     public function withAddedHeader($name, $value): MessageInterface
     {
-        return $this->viaFactory($this->getMessage()->withAddedHeader($name, $value));
+        return $this->viaFactory($this->getWrapped()->withAddedHeader($name, $value));
     }
 
     public function withoutHeader($name): MessageInterface
     {
-        return $this->viaFactory($this->getMessage()->withoutHeader($name));
+        return $this->viaFactory($this->getWrapped()->withoutHeader($name));
     }
 
     public function getBody(): StreamInterface
     {
-        return $this->getMessage()->getBody();
+        return $this->getWrapped()->getBody();
     }
 
     public function withBody(StreamInterface $body): MessageInterface
     {
-        return $this->viaFactory($this->getMessage()->withBody($body));
+        return $this->viaFactory($this->getWrapped()->withBody($body));
     }
 }
