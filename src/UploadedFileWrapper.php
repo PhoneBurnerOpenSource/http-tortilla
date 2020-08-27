@@ -5,7 +5,7 @@ namespace PhoneBurner\Http\Message;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-trait UploadWrapper
+trait UploadedFileWrapper
 {
     private $file;
 

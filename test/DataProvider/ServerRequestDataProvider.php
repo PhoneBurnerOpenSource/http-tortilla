@@ -2,7 +2,6 @@
 
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
-use PhoneBurnerTest\Http\Message\DataProvider\RequestDataProvider;
 use Psr\Http\Message\UploadedFileInterface;
 
 trait ServerRequestDataProvider
@@ -12,7 +11,7 @@ trait ServerRequestDataProvider
         provideWithMethods as provideRequestWithMethods;
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         yield from $this->provideRequestGetterMethods();
 
@@ -57,7 +56,7 @@ trait ServerRequestDataProvider
         yield "getAttribute('obj', 'test')" => ['getAttribute', ['user', 'test'], 'test'];
     }
 
-    public function provideWithMethods(): \Generator
+    public function provideWithMethods(): iterable
     {
         yield from $this->provideRequestWithMethods();
 

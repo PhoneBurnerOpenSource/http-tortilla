@@ -2,17 +2,14 @@
 
 namespace PhoneBurnerTest\Http\Message;
 
-use PhoneBurnerTest\Http\Message\Fixture\UploadedFileFixture;
-use PHPUnit\Framework\TestCase;
+use PhoneBurnerTest\Http\Message\Fixture\UploadedFileWrapperFixture;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-class UploadWrapperTest extends TestCase
+class UploadedFileWrapperTest extends WrapperTestCase
 {
-    use CommonWrapperTests;
-
-    private const WRAPPED_CLASS = UploadedFileInterface::class;
-    private const FIXTURE_CLASS = UploadedFileFixture::class;
+    protected const WRAPPED_CLASS = UploadedFileInterface::class;
+    protected const FIXTURE_CLASS = UploadedFileWrapperFixture::class;
 
     /**
      * @test
@@ -46,7 +43,7 @@ class UploadWrapperTest extends TestCase
         $this->mocked_wrapped->moveTo('path')->willReturn('something');
 
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertNull($sut->moveTo('path'));
+        self::assertNull($sut->moveTo('path'));
     }
 
     /**
@@ -64,12 +61,12 @@ class UploadWrapperTest extends TestCase
         $sut->moveTo('path');
     }
 
-    public function provideAllMethods(): \Generator
+    public function provideAllMethods(): iterable
     {
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): ?\Generator
+    public function provideGetterMethods(): iterable
     {
         $stream = $this->prophesize(StreamInterface::class);
         yield "getStream()" => ['getStream', [], $stream->reveal()];
@@ -84,10 +81,5 @@ class UploadWrapperTest extends TestCase
 
         yield "getClientMediaType() => 'type'" => ['getClientMediaType', [], 'type'];
         yield "getClientMediaType() => null" => ['getClientMediaType', [], null];
-    }
-
-    public function provideWithMethods(): array
-    {
-        return [];
     }
 }

@@ -6,13 +6,13 @@ use Psr\Http\Message\StreamInterface;
 
 trait MessageDataProvider
 {
-    public function provideAllMethods(): \Generator
+    public function provideAllMethods(): iterable
     {
         yield from $this->provideWithMethods();
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         yield "getProtocolVersion() => '1.1'" => ['getProtocolVersion', [], '1.1'];
         yield "getProtocolVersion() => '1.0'" => ['getProtocolVersion', [], '1.0'];
@@ -39,7 +39,7 @@ trait MessageDataProvider
         yield "getBody()" => ['getBody', [], $body];
     }
 
-    public function provideWithMethods(): \Generator
+    public function provideWithMethods(): iterable
     {
         yield "withProtocolVersion('1.1')" => ['withProtocolVersion', ['1.1']];
         yield "withProtocolVersion('1.0')" => ['withProtocolVersion', ['1.0']];
