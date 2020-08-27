@@ -10,13 +10,13 @@ class UriWrapperTest extends EvolvingWrapperTestCase
     protected const WRAPPED_CLASS = UriInterface::class;
     protected const FIXTURE_CLASS = UriWrapperFixture::class;
 
-    public function provideAllMethods(): \Generator
+    public function provideAllMethods(): iterable
     {
         yield from $this->provideWithMethods();
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         yield "getScheme" => ['getScheme', [], 'http'];
         yield "getAuthority (none)" => ['getAuthority', [], ''];
@@ -31,7 +31,7 @@ class UriWrapperTest extends EvolvingWrapperTestCase
         yield "__toString" => ['__toString', [], 'http://example.com/test'];
     }
 
-    public function provideWithMethods(): \Generator
+    public function provideWithMethods(): iterable
     {
         yield "withScheme" => ['withScheme', ['https']];
         yield "withUserInfo (user only)" => ['withUserInfo', ['nopass', null]];

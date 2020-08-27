@@ -13,7 +13,7 @@ class StreamWrapperTest extends WrapperTestCase
     /**
      * @test
      */
-    public function closeIsProxied()
+    public function closeIsProxied(): void
     {
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->close()->shouldBeCalled();
@@ -24,7 +24,7 @@ class StreamWrapperTest extends WrapperTestCase
     /**
      * @test
      */
-    public function detachIsProxied()
+    public function detachIsProxied(): void
     {
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->detach()->shouldBeCalled()->willReturn(null);
@@ -43,7 +43,7 @@ class StreamWrapperTest extends WrapperTestCase
      * @test
      * @dataProvider provideSeekArgs
      */
-    public function seekIsProxied($offset, $whence)
+    public function seekIsProxied($offset, $whence): void
     {
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->seek($offset, $whence)->shouldBeCalled();
@@ -51,7 +51,7 @@ class StreamWrapperTest extends WrapperTestCase
         $sut->seek($offset, $whence);
     }
 
-    public function provideSeekArgs()
+    public function provideSeekArgs(): iterable
     {
         yield [10, SEEK_CUR];
         yield [10, SEEK_END];
@@ -62,7 +62,7 @@ class StreamWrapperTest extends WrapperTestCase
     /**
      * @test
      */
-    public function rewindIsProxied()
+    public function rewindIsProxied(): void
     {
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->rewind()->shouldBeCalled();
@@ -73,7 +73,7 @@ class StreamWrapperTest extends WrapperTestCase
     /**
      * @test
      */
-    public function writeIsProxied()
+    public function writeIsProxied(): void
     {
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->write('test')->willReturn(10);
@@ -81,12 +81,12 @@ class StreamWrapperTest extends WrapperTestCase
         self::assertSame(10, $sut->write('test'));
     }
 
-    public function provideAllMethods(): \Generator
+    public function provideAllMethods(): iterable
     {
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         yield "getSize (null)" => ['getSize', [], null];
         yield "getSize" => ['getSize', [], 100];

@@ -61,12 +61,12 @@ class UploadedFileWrapperTest extends WrapperTestCase
         $sut->moveTo('path');
     }
 
-    public function provideAllMethods(): \Generator
+    public function provideAllMethods(): iterable
     {
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         $stream = $this->prophesize(StreamInterface::class);
         yield "getStream()" => ['getStream', [], $stream->reveal()];

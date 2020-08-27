@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class EvolvingWrapperTestCase extends WrapperTestCase
 {
-    abstract public function provideWithMethods(): \Generator;
+    abstract public function provideWithMethods(): iterable;
 
     /**
      * @test

@@ -2,9 +2,6 @@
 
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
-use PhoneBurnerTest\Http\Message\DataProvider\MessageDataProvider;
-use Psr\Http\Message\UriInterface;
-
 trait ResponseDataProvider
 {
     use MessageDataProvider {
@@ -12,7 +9,7 @@ trait ResponseDataProvider
         provideWithMethods as provideMessageWithMethods;
     }
 
-    public function provideGetterMethods(): \Generator
+    public function provideGetterMethods(): iterable
     {
         yield from $this->provideMessageGetterMethods();
 
@@ -21,7 +18,7 @@ trait ResponseDataProvider
         yield "getReasonPhrase() => 'OK'" => ['getReasonPhrase', [], 'OK'];
     }
 
-    public function provideWithMethods(): \Generator
+    public function provideWithMethods(): iterable
     {
         yield from $this->provideMessageWithMethods();
 

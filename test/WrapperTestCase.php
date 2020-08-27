@@ -7,8 +7,8 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 abstract class WrapperTestCase extends TestCase
 {
-    abstract public function provideAllMethods(): \Generator;
-    abstract public function provideGetterMethods(): \Generator;
+    abstract public function provideAllMethods(): iterable;
+    abstract public function provideGetterMethods(): iterable;
 
     /**
      * @var ObjectProphecy
