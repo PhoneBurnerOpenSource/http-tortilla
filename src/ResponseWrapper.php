@@ -8,34 +8,34 @@ trait ResponseWrapper
 {
     use MessageWrapper;
 
-    private $message;
+    private $wrapped;
 
-    protected function setMessage(ResponseInterface $message): void
+    protected function setWrapped(ResponseInterface $message): void
     {
-        $this->message = $message;
+        $this->wrapped = $message;
     }
 
-    private function getMessage(): ResponseInterface
+    private function getWrapped(): ResponseInterface
     {
-        if (!($this->message instanceof ResponseInterface)) {
+        if (!($this->wrapped instanceof ResponseInterface)) {
             throw new \UnexpectedValueException('must `setRequest` before using it');
         }
 
-        return $this->message;
+        return $this->wrapped;
     }
 
     public function getStatusCode(): int
     {
-        return $this->getMessage()->getStatusCode();
+        return $this->getWrapped()->getStatusCode();
     }
 
     public function withStatus($code, $reasonPhrase = '')
     {
-        return $this->viaFactory($this->getMessage()->withStatus($code, $reasonPhrase));
+        return $this->viaFactory($this->getWrapped()->withStatus($code, $reasonPhrase));
     }
 
     public function getReasonPhrase(): string
     {
-        return $this->getMessage()->getReasonPhrase();
+        return $this->getWrapped()->getReasonPhrase();
     }
 }

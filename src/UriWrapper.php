@@ -6,114 +6,114 @@ use Psr\Http\Message\UriInterface;
 
 trait UriWrapper
 {
-    private $uri;
-    private $uriFactory;
+    private $wrapped;
+    private $factory;
 
     protected function setFactory(callable $factory)
     {
-        $this->uriFactory = $factory;
+        $this->factory = $factory;
     }
 
     private function viaFactory(UriInterface $uri)
     {
-        if (!$this->uriFactory) {
+        if (!$this->factory) {
             return $uri;
         }
 
-        return call_user_func($this->uriFactory, $uri);
+        return call_user_func($this->factory, $uri);
     }
 
-    protected function setUri(UriInterface $uri)
+    protected function setWrapped(UriInterface $uri)
     {
-        $this->uri = $uri;
+        $this->wrapped = $uri;
     }
 
-    private function getUri(): UriInterface
+    private function getWrapped(): UriInterface
     {
-        if (!($this->uri instanceof UriInterface)) {
+        if (!($this->wrapped instanceof UriInterface)) {
             throw new \UnexpectedValueException('must `setUri` before using it');
         }
 
-        return $this->uri;
+        return $this->wrapped;
     }
 
     public function getScheme(): string
     {
-        return $this->getUri()->getScheme();
+        return $this->getWrapped()->getScheme();
     }
 
     public function getAuthority(): string
     {
-        return $this->getUri()->getAuthority();
+        return $this->getWrapped()->getAuthority();
     }
 
     public function getUserInfo(): string
     {
-        return $this->getUri()->getUserInfo();
+        return $this->getWrapped()->getUserInfo();
     }
 
     public function getHost(): string
     {
-        return $this->getUri()->getHost();
+        return $this->getWrapped()->getHost();
     }
 
     public function getPort(): ?int
     {
-        return $this->getUri()->getPort();
+        return $this->getWrapped()->getPort();
     }
 
     public function getPath(): string
     {
-        return $this->getUri()->getPath();
+        return $this->getWrapped()->getPath();
     }
 
     public function getQuery(): string
     {
-        return $this->getUri()->getQuery();
+        return $this->getWrapped()->getQuery();
     }
 
     public function getFragment(): string
     {
-        return $this->getUri()->getFragment();
+        return $this->getWrapped()->getFragment();
     }
 
     public function withScheme($scheme): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withScheme($scheme));
+        return $this->viaFactory($this->getWrapped()->withScheme($scheme));
     }
 
     public function withUserInfo($user, $password = null): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withUserInfo($user, $password));
+        return $this->viaFactory($this->getWrapped()->withUserInfo($user, $password));
     }
 
     public function withHost($host): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withHost($host));
+        return $this->viaFactory($this->getWrapped()->withHost($host));
     }
 
     public function withPort($port): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withPort($port));
+        return $this->viaFactory($this->getWrapped()->withPort($port));
     }
 
     public function withPath($path): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withPath($path));
+        return $this->viaFactory($this->getWrapped()->withPath($path));
     }
 
     public function withQuery($query): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withQuery($query));
+        return $this->viaFactory($this->getWrapped()->withQuery($query));
     }
 
     public function withFragment($fragment): UriInterface
     {
-        return $this->viaFactory($this->getUri()->withFragment($fragment));
+        return $this->viaFactory($this->getWrapped()->withFragment($fragment));
     }
 
     public function __toString(): string
     {
-        return $this->getUri()->__toString();
+        return $this->getWrapped()->__toString();
     }
 }

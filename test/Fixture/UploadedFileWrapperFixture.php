@@ -12,7 +12,7 @@ class UploadedFileWrapperFixture implements UploadedFileInterface
     public function __construct(UploadedFileInterface $file = null)
     {
         if (null !== $file) {
-            $this->setUploadedFile($file);
+            $this->setWrapped($file);
         }
     }
 }

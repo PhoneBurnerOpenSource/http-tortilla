@@ -12,7 +12,7 @@ class MessageWrapperFixture implements MessageInterface
     public function __construct(MessageInterface $message = null, callable $factory = null)
     {
         if (null !== $message) {
-            $this->setMessage($message);
+            $this->setWrapped($message);
         }
 
         if (null !== $factory) {

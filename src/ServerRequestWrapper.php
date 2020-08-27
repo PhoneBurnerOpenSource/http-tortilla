@@ -8,84 +8,84 @@ trait ServerRequestWrapper
 {
     use RequestWrapper;
 
-    private $message;
+    private $wrapped;
 
-    protected function setMessage(ServerRequestInterface $message): void
+    protected function setWrapped(ServerRequestInterface $message): void
     {
-        $this->message = $message;
+        $this->wrapped = $message;
     }
 
-    private function getMessage(): ServerRequestInterface
+    private function getWrapped(): ServerRequestInterface
     {
-        if (!($this->message instanceof ServerRequestInterface)) {
+        if (!($this->wrapped instanceof ServerRequestInterface)) {
             throw new \UnexpectedValueException('must `setMessage` before using it');
         }
 
-        return $this->message;
+        return $this->wrapped;
     }
 
     public function getServerParams()
     {
-        return $this->getMessage()->getServerParams();
+        return $this->getWrapped()->getServerParams();
     }
 
     public function getCookieParams()
     {
-        return $this->getMessage()->getCookieParams();
+        return $this->getWrapped()->getCookieParams();
     }
 
     public function withCookieParams(array $cookies)
     {
-        return $this->viaFactory($this->getMessage()->withCookieParams($cookies));
+        return $this->viaFactory($this->getWrapped()->withCookieParams($cookies));
     }
 
     public function getQueryParams()
     {
-        return $this->getMessage()->getQueryParams();
+        return $this->getWrapped()->getQueryParams();
     }
 
     public function withQueryParams(array $query)
     {
-        return $this->viaFactory($this->getMessage()->withQueryParams($query));
+        return $this->viaFactory($this->getWrapped()->withQueryParams($query));
     }
 
     public function getUploadedFiles()
     {
-        return $this->getMessage()->getUploadedFiles();
+        return $this->getWrapped()->getUploadedFiles();
     }
 
     public function withUploadedFiles(array $uploadedFiles)
     {
-        return $this->viaFactory($this->getMessage()->withUploadedFiles($uploadedFiles));
+        return $this->viaFactory($this->getWrapped()->withUploadedFiles($uploadedFiles));
     }
 
     public function getParsedBody()
     {
-        return $this->getMessage()->getParsedBody();
+        return $this->getWrapped()->getParsedBody();
     }
 
     public function withParsedBody($data)
     {
-        return $this->viaFactory($this->getMessage()->withParsedBody($data));
+        return $this->viaFactory($this->getWrapped()->withParsedBody($data));
     }
 
     public function getAttributes()
     {
-        return $this->getMessage()->getAttributes();
+        return $this->getWrapped()->getAttributes();
     }
 
     public function getAttribute($name, $default = null)
     {
-        return $this->getMessage()->getAttribute($name, $default);
+        return $this->getWrapped()->getAttribute($name, $default);
     }
 
     public function withAttribute($name, $value)
     {
-        return $this->viaFactory($this->getMessage()->withAttribute($name, $value));
+        return $this->viaFactory($this->getWrapped()->withAttribute($name, $value));
     }
 
     public function withoutAttribute($name)
     {
-        return $this->viaFactory($this->getMessage()->withoutAttribute($name));
+        return $this->viaFactory($this->getWrapped()->withoutAttribute($name));
     }
 }

@@ -12,7 +12,7 @@ class RequestWrapperFixture implements RequestInterface
     public function __construct(RequestInterface $request = null, callable $factory = null)
     {
         if (null !== $request) {
-            $this->setMessage($request);
+            $this->setWrapped($request);
         }
 
         if (null !== $factory) {

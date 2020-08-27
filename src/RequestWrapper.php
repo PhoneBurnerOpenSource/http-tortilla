@@ -9,49 +9,49 @@ trait RequestWrapper
 {
     use MessageWrapper;
 
-    private $message;
+    private $wrapped;
 
-    protected function setMessage(RequestInterface $message): void
+    protected function setWrapped(RequestInterface $message): void
     {
-        $this->message = $message;
+        $this->wrapped = $message;
     }
 
-    private function getMessage(): RequestInterface
+    private function getWrapped(): RequestInterface
     {
-        if (!($this->message instanceof RequestInterface)) {
+        if (!($this->wrapped instanceof RequestInterface)) {
             throw new \UnexpectedValueException('must `setRequest` before using it');
         }
 
-        return $this->message;
+        return $this->wrapped;
     }
 
     public function getRequestTarget(): string
     {
-        return $this->getMessage()->getRequestTarget();
+        return $this->getWrapped()->getRequestTarget();
     }
 
     public function withRequestTarget($requestTarget): RequestInterface
     {
-        return $this->viaFactory($this->getMessage()->withRequestTarget($requestTarget));
+        return $this->viaFactory($this->getWrapped()->withRequestTarget($requestTarget));
     }
 
     public function getMethod(): string
     {
-        return $this->getMessage()->getMethod();
+        return $this->getWrapped()->getMethod();
     }
 
     public function withMethod($method): RequestInterface
     {
-        return $this->viaFactory($this->getMessage()->withMethod($method));
+        return $this->viaFactory($this->getWrapped()->withMethod($method));
     }
 
     public function getUri(): UriInterface
     {
-        return $this->getMessage()->getUri();
+        return $this->getWrapped()->getUri();
     }
 
     public function withUri(UriInterface $uri, $preserveHost = false): RequestInterface
     {
-        return $this->viaFactory($this->getMessage()->withUri($uri, $preserveHost));
+        return $this->viaFactory($this->getWrapped()->withUri($uri, $preserveHost));
     }
 }

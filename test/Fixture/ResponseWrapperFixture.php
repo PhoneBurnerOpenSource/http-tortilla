@@ -12,7 +12,7 @@ class ResponseWrapperFixture implements ResponseInterface
     public function __construct(ResponseInterface $response = null, callable $factory = null)
     {
         if (null !== $response) {
-            $this->setMessage($response);
+            $this->setWrapped($response);
         }
 
         if (null !== $factory) {

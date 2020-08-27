@@ -6,94 +6,94 @@ use Psr\Http\Message\StreamInterface;
 
 trait StreamWrapper
 {
-    private $stream;
+    private $wrapped;
 
-    protected function setStream(StreamInterface $stream)
+    protected function setWrapped(StreamInterface $stream)
     {
-        $this->stream = $stream;
+        $this->wrapped = $stream;
     }
 
-    private function getStream(): StreamInterface
+    private function getWrapped(): StreamInterface
     {
-        if (!($this->stream instanceof StreamInterface)) {
+        if (!($this->wrapped instanceof StreamInterface)) {
             throw new \UnexpectedValueException('must `setUri` before using it');
         }
 
-        return $this->stream;
+        return $this->wrapped;
     }
 
     public function __toString()
     {
-        return $this->getStream()->__toString();
+        return $this->getWrapped()->__toString();
     }
 
     public function close(): void
     {
-        $this->getStream()->close();;
+        $this->getWrapped()->close();;
     }
 
     public function detach()
     {
-        return $this->getStream()->detach();
+        return $this->getWrapped()->detach();
     }
 
     public function getSize(): ?int
     {
-        return $this->getStream()->getSize();
+        return $this->getWrapped()->getSize();
     }
 
     public function tell(): int
     {
-        return $this->getStream()->tell();
+        return $this->getWrapped()->tell();
     }
 
     public function eof(): bool
     {
-        return $this->getStream()->eof();
+        return $this->getWrapped()->eof();
     }
 
     public function isSeekable(): bool
     {
-        return $this->getStream()->isSeekable();
+        return $this->getWrapped()->isSeekable();
     }
 
     public function seek($offset, $whence = SEEK_SET)
     {
-        return $this->getStream()->seek($offset, $whence);
+        return $this->getWrapped()->seek($offset, $whence);
     }
 
     public function rewind()
     {
-        return $this->getStream()->rewind();
+        return $this->getWrapped()->rewind();
     }
 
     public function isWritable(): bool
     {
-        return $this->getStream()->isWritable();
+        return $this->getWrapped()->isWritable();
     }
 
     public function write($string): int
     {
-        return $this->getStream()->write($string);
+        return $this->getWrapped()->write($string);
     }
 
     public function isReadable(): bool
     {
-        return $this->getStream()->isReadable();
+        return $this->getWrapped()->isReadable();
     }
 
     public function read($length): string
     {
-        return $this->getStream()->read($length);
+        return $this->getWrapped()->read($length);
     }
 
     public function getContents(): string
     {
-        return $this->getStream()->getContents();
+        return $this->getWrapped()->getContents();
     }
 
     public function getMetadata($key = null)
     {
-        return $this->getStream()->getMetadata($key);
+        return $this->getWrapped()->getMetadata($key);
     }
 }

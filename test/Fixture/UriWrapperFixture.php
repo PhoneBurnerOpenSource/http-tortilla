@@ -12,7 +12,7 @@ class UriWrapperFixture implements UriInterface
     public function __construct(UriInterface $uri = null, callable $factory = null)
     {
         if (null !== $uri) {
-            $this->setUri($uri);
+            $this->setWrapped($uri);
         }
 
         if (null !== $factory) {
