@@ -29,13 +29,13 @@ class StreamWrapperTest extends WrapperTestCase
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->detach()->shouldBeCalled()->willReturn(null);
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertNull($sut->detach());
+        self::assertNull($sut->detach());
 
         $fixture_class = static::FIXTURE_CLASS;
         $resource = fopen('php://temp', 'r');
         $this->mocked_wrapped->detach()->shouldBeCalled()->willReturn($resource);
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertSame($resource, $sut->detach());
+        self::assertSame($resource, $sut->detach());
         fclose($resource);
     }
 
@@ -78,7 +78,7 @@ class StreamWrapperTest extends WrapperTestCase
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->write('test')->willReturn(10);
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertSame(10, $sut->write('test'));
+        self::assertSame(10, $sut->write('test'));
     }
 
     public function provideAllMethods(): \Generator

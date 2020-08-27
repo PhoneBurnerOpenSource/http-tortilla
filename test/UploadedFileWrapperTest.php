@@ -43,7 +43,7 @@ class UploadedFileWrapperTest extends WrapperTestCase
         $this->mocked_wrapped->moveTo('path')->willReturn('something');
 
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertNull($sut->moveTo('path'));
+        self::assertNull($sut->moveTo('path'));
     }
 
     /**

@@ -48,6 +48,6 @@ abstract class WrapperTestCase extends TestCase
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->$method(...$expected)->willReturn($return);
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertSame($return, $sut->$method(...$args));
+        self::assertSame($return, $sut->$method(...$args));
     }
 }

@@ -25,7 +25,7 @@ abstract class EvolvingWrapperTestCase extends WrapperTestCase
         $return = $this->prophesize(static::WRAPPED_CLASS)->reveal();
         $this->mocked_wrapped->$method(...$expected)->willReturn($return)->shouldBeCalled();
         $sut = new $fixture_class($this->mocked_wrapped->reveal());
-        $this->assertSame($return, $sut->$method(...$args));
+        self::assertSame($return, $sut->$method(...$args));
     }
 
     /**
@@ -53,6 +53,6 @@ abstract class EvolvingWrapperTestCase extends WrapperTestCase
             return $wrapped;
         });
 
-        $this->assertSame($wrapped, $sut->$method(...$args));
+        self::assertSame($wrapped, $sut->$method(...$args));
     }
 }
