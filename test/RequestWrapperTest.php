@@ -6,7 +6,7 @@ use PhoneBurnerTest\Http\Message\DataProvider\RequestDataProvider;
 use PhoneBurnerTest\Http\Message\Fixture\RequestWrapperFixture;
 use Psr\Http\Message\RequestInterface;
 
-class RequestWrapperTest extends WrapperTestCase
+class RequestWrapperTest extends EvolvingWrapperTestCase
 {
     use RequestDataProvider;
 

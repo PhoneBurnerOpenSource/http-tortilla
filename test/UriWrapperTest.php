@@ -5,7 +5,7 @@ namespace PhoneBurnerTest\Http\Message;
 use PhoneBurnerTest\Http\Message\Fixture\UriWrapperFixture;
 use Psr\Http\Message\UriInterface;
 
-class UriWrapperTest extends WrapperTestCase
+class UriWrapperTest extends EvolvingWrapperTestCase
 {
     protected const WRAPPED_CLASS = UriInterface::class;
     protected const FIXTURE_CLASS = UriWrapperFixture::class;

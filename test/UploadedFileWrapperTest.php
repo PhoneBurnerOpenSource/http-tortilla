@@ -82,9 +82,4 @@ class UploadedFileWrapperTest extends WrapperTestCase
         yield "getClientMediaType() => 'type'" => ['getClientMediaType', [], 'type'];
         yield "getClientMediaType() => null" => ['getClientMediaType', [], null];
     }
-
-    public function provideWithMethods(): \Generator
-    {
-        yield from [];
-    }
 }

@@ -10,12 +10,6 @@ class StreamWrapperTest extends WrapperTestCase
     protected const WRAPPED_CLASS = StreamInterface::class;
     protected const FIXTURE_CLASS = StreamWrapperFixture::class;
 
-    public function provideAllMethods(): \Generator
-    {
-        yield from $this->provideWithMethods();
-        yield from $this->provideGetterMethods();
-    }
-
     /**
      * @test
      */
@@ -87,6 +81,11 @@ class StreamWrapperTest extends WrapperTestCase
         $this->assertSame(10, $sut->write('test'));
     }
 
+    public function provideAllMethods(): \Generator
+    {
+        yield from $this->provideGetterMethods();
+    }
+
     public function provideGetterMethods(): \Generator
     {
         yield "getSize (null)" => ['getSize', [], null];
@@ -106,10 +105,5 @@ class StreamWrapperTest extends WrapperTestCase
         yield "getMetadata (key)" => ['getMetadata', ['key'], 'value'];
         yield "getMetadata (invalid key)" => ['getMetadata', ['not_key'], null];
         yield "__toString" => ['__toString', [], 'content'];
-    }
-
-    public function provideWithMethods(): \Generator
-    {
-        yield from [];
     }
 }

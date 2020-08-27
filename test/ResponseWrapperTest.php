@@ -6,7 +6,7 @@ use PhoneBurnerTest\Http\Message\DataProvider\ResponseDataProvider;
 use PhoneBurnerTest\Http\Message\Fixture\ResponseWrapperFixture;
 use Psr\Http\Message\ResponseInterface;
 
-class ResponseWrapperTest extends WrapperTestCase
+class ResponseWrapperTest extends EvolvingWrapperTestCase
 {
     use ResponseDataProvider;
 

@@ -6,7 +6,7 @@ use PhoneBurnerTest\Http\Message\DataProvider\MessageDataProvider;
 use PhoneBurnerTest\Http\Message\Fixture\MessageWrapperFixture;
 use Psr\Http\Message\MessageInterface;
 
-class MessageWrapperTest extends WrapperTestCase
+class MessageWrapperTest extends EvolvingWrapperTestCase
 {
     use MessageDataProvider;
 
