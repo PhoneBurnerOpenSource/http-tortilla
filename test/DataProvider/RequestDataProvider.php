@@ -2,6 +2,7 @@
 
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
+use Generator;
 use Psr\Http\Message\UriInterface;
 
 trait RequestDataProvider
@@ -11,7 +12,7 @@ trait RequestDataProvider
         provideWithMethods as provideMessageWithMethods;
     }
 
-    public function provideGetterMethods(): iterable
+    public function provideGetterMethods(): Generator
     {
         yield from $this->provideMessageGetterMethods();
 
@@ -27,7 +28,7 @@ trait RequestDataProvider
         yield "getUri()" => ['getUri', [], $uri];
     }
 
-    public function provideWithMethods(): iterable
+    public function provideWithMethods(): Generator
     {
         yield from $this->provideMessageWithMethods();
 

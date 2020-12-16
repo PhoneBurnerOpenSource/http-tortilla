@@ -2,17 +2,18 @@
 
 namespace PhoneBurnerTest\Http\Message\DataProvider;
 
+use Generator;
 use Psr\Http\Message\StreamInterface;
 
 trait MessageDataProvider
 {
-    public function provideAllMethods(): iterable
+    public function provideAllMethods(): Generator
     {
         yield from $this->provideWithMethods();
         yield from $this->provideGetterMethods();
     }
 
-    public function provideGetterMethods(): iterable
+    public function provideGetterMethods(): Generator
     {
         yield "getProtocolVersion() => '1.1'" => ['getProtocolVersion', [], '1.1'];
         yield "getProtocolVersion() => '1.0'" => ['getProtocolVersion', [], '1.0'];
@@ -39,7 +40,7 @@ trait MessageDataProvider
         yield "getBody()" => ['getBody', [], $body];
     }
 
-    public function provideWithMethods(): iterable
+    public function provideWithMethods(): Generator
     {
         yield "withProtocolVersion('1.1')" => ['withProtocolVersion', ['1.1']];
         yield "withProtocolVersion('1.0')" => ['withProtocolVersion', ['1.0']];
