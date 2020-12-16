@@ -3,10 +3,13 @@
 namespace PhoneBurnerTest\Http\Message;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 abstract class WrapperTestCase extends TestCase
 {
+    use ProphecyTrait;
+
     abstract public function provideAllMethods(): iterable;
     abstract public function provideGetterMethods(): iterable;
 
