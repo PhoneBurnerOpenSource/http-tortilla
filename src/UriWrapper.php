@@ -10,12 +10,12 @@ trait UriWrapper
     private $wrapped;
     private $factory;
 
-    protected function setFactory(callable $factory)
+    protected function setFactory(callable $factory): void
     {
         $this->factory = $factory;
     }
 
-    private function viaFactory(UriInterface $uri)
+    private function viaFactory(UriInterface $uri): UriInterface
     {
         if (!$this->factory) {
             return $uri;
@@ -24,7 +24,7 @@ trait UriWrapper
         return call_user_func($this->factory, $uri);
     }
 
-    protected function setWrapped(UriInterface $uri)
+    protected function setWrapped(UriInterface $uri): void
     {
         $this->wrapped = $uri;
     }

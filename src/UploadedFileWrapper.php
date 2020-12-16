@@ -10,7 +10,7 @@ trait UploadedFileWrapper
 {
     private $wrapped;
 
-    private function setWrapped(UploadedFileInterface $file)
+    private function setWrapped(UploadedFileInterface $file): void
     {
         $this->wrapped = $file;
     }

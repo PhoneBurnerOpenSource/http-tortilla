@@ -30,7 +30,7 @@ trait ResponseWrapper
         return $this->getWrapped()->getStatusCode();
     }
 
-    public function withStatus($code, $reasonPhrase = '')
+    public function withStatus($code, $reasonPhrase = ''): ResponseInterface
     {
         return $this->viaFactory($this->getWrapped()->withStatus($code, $reasonPhrase));
     }

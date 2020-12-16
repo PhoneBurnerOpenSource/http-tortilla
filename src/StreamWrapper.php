@@ -9,7 +9,7 @@ trait StreamWrapper
 {
     private $wrapped;
 
-    protected function setWrapped(StreamInterface $stream)
+    protected function setWrapped(StreamInterface $stream): void
     {
         $this->wrapped = $stream;
     }
@@ -23,7 +23,7 @@ trait StreamWrapper
         return $this->wrapped;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getWrapped()->__toString();
     }
