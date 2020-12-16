@@ -29,7 +29,7 @@ trait StreamWrapper
 
     public function close(): void
     {
-        $this->getWrapped()->close();;
+        $this->getWrapped()->close();
     }
 
     public function detach()
