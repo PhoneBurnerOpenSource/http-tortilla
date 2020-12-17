@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurnerTest\Http\Message;
 
 use PHPUnit\Framework\TestCase;
@@ -37,9 +39,7 @@ abstract class EvolvingWrapperTestCase extends WrapperTestCase
         // allow expected args to differ from the args we pass the wrapper
         // but if they're not defined, they are the same as what is passed to
         // the wrapper
-        if (null === $expected) {
-            $expected = $args;
-        }
+        $expected ??= $args;
 
         $fixture_class = static::FIXTURE_CLASS;
 

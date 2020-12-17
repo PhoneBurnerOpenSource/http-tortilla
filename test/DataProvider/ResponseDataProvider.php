@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurnerTest\Http\Message\DataProvider;
+
+use Generator;
 
 trait ResponseDataProvider
 {
@@ -9,7 +13,7 @@ trait ResponseDataProvider
         provideWithMethods as provideMessageWithMethods;
     }
 
-    public function provideGetterMethods(): iterable
+    public function provideGetterMethods(): Generator
     {
         yield from $this->provideMessageGetterMethods();
 
@@ -18,7 +22,7 @@ trait ResponseDataProvider
         yield "getReasonPhrase() => 'OK'" => ['getReasonPhrase', [], 'OK'];
     }
 
-    public function provideWithMethods(): iterable
+    public function provideWithMethods(): Generator
     {
         yield from $this->provideMessageWithMethods();
 

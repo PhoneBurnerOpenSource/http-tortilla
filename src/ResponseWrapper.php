@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurner\Http\Message;
 
 use Psr\Http\Message\ResponseInterface;
@@ -29,7 +31,7 @@ trait ResponseWrapper
         return $this->getWrapped()->getStatusCode();
     }
 
-    public function withStatus($code, $reasonPhrase = '')
+    public function withStatus($code, $reasonPhrase = ''): ResponseInterface
     {
         return $this->viaFactory($this->getWrapped()->withStatus($code, $reasonPhrase));
     }

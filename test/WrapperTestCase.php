@@ -1,12 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurnerTest\Http\Message;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 abstract class WrapperTestCase extends TestCase
 {
+    use ProphecyTrait;
+
     abstract public function provideAllMethods(): iterable;
     abstract public function provideGetterMethods(): iterable;
 
@@ -41,9 +46,7 @@ abstract class WrapperTestCase extends TestCase
         // allow expected args to differ from the args we pass the wrapper
         // but if they're not defined, they are the same as what is passed to
         // the wrapper
-        if (null === $expected) {
-            $expected = $args;
-        }
+        $expected ??= $args;
 
         $fixture_class = static::FIXTURE_CLASS;
         $this->mocked_wrapped->$method(...$expected)->willReturn($return);

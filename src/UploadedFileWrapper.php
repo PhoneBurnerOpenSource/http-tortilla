@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurner\Http\Message;
 
 use Psr\Http\Message\StreamInterface;
@@ -9,7 +11,7 @@ trait UploadedFileWrapper
 {
     private $wrapped;
 
-    private function setWrapped(UploadedFileInterface $file)
+    private function setWrapped(UploadedFileInterface $file): void
     {
         $this->wrapped = $file;
     }

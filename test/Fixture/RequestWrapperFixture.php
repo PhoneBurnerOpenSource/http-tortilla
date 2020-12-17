@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurnerTest\Http\Message\Fixture;
 
 use PhoneBurner\Http\Message\RequestWrapper;

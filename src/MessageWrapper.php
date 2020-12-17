@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhoneBurner\Http\Message;
 
 use Psr\Http\Message\MessageInterface;
@@ -10,12 +12,12 @@ trait MessageWrapper
     private $wrapped;
     private $factory;
 
-    protected function setFactory(callable $factory)
+    protected function setFactory(callable $factory): void
     {
         $this->factory = $factory;
     }
 
-    private function viaFactory(MessageInterface $message)
+    private function viaFactory(MessageInterface $message): MessageInterface
     {
         if (!$this->factory) {
             return $message;
@@ -24,7 +26,7 @@ trait MessageWrapper
         return call_user_func($this->factory, $message);
     }
 
-    protected function setWrapped(MessageInterface $message)
+    protected function setWrapped(MessageInterface $message): void
     {
         $this->wrapped = $message;
     }
